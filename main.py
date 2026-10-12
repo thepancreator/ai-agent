@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+import argparse
 
 def main():
     load_dotenv()
@@ -23,6 +24,11 @@ def main():
     )
     print(response.choices[0].message.content)
 
+def generate_content(client: OpenAI, messages: list[dict[str:str]]):
+    return client.chat.completions.create(
+        model="openrouter/free",
+        messages=messages,
+    )
 
 if __name__ == "__main__":
     main()
