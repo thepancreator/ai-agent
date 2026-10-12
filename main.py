@@ -27,10 +27,10 @@ def main():
     if response.usage is None:
         raise RuntimeError("no response")
 
-
-    print(f"User prompt: {args.user_prompt}")
-    print(f"Prompt tokens: {response.usage.prompt_tokens}")
-    print(f"Response tokens: {response.usage.completion_tokens}")
+    if args.verbose:
+        print(f"User prompt: {args.user_prompt}")
+        print(f"Prompt tokens: {response.usage.prompt_tokens}")
+        print(f"Response tokens: {response.usage.completion_tokens}")
 
     print(response.choices[0].message.content)
 
