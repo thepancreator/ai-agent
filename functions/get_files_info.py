@@ -28,7 +28,6 @@ def get_files_info(working_directory: str, directory: str = ".") -> str:
         try:
             contents = os.listdir(full_path)
             item_string = "\n".join(list(map(directory_item_printer, contents)))
-
         except Exception as e:
             return f"Error: {e}"
 
