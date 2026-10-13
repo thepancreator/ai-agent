@@ -2,6 +2,27 @@ import os
 import subprocess
 from config import *
 
+schema_run_python_file = {
+    "type": "function",
+    "function": {
+        "name": "run_python_file",
+        "description": "Runs python file within working directory, and accepts optional arguments",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File path of targeted python file, relative to the working directory",
+                }
+                "args": {
+                    "type": "list[string]",
+                    "desciption": "Optional list of arguments to pass to python file",
+                },
+            },
+        },
+    }
+}
+
 def run_python_file(working_directory: str, file_path: str, args: list[str] | None = None) -> str:
     try:
         working_dir_abs = os.path.abspath(working_directory)

@@ -1,6 +1,23 @@
 import os
 full_path: str
 
+schema_get_files_info = {
+    "type": "function",
+    "function": {
+        "name": "get_files_info",
+        "description": "Lists files in a specified directory relative to the working directory, providing file size and directory status",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "directory": {
+                    "type": "string",
+                    "description": "Directory path to list files from, relative to the working directory (default is the working directory itself)",
+                },
+            },
+        },
+    },
+}
+
 def directory_item_printer(item_name: str) -> str:
     try:
         item_path = os.path.normpath(os.path.join(full_path, item_name))
