@@ -2,6 +2,28 @@ import os
 from config import *
 full_path: str
 
+schema_write_file = {
+    "type": "function",
+    "function": {
+        "name": "write_file",
+        "description": "Runs python file within working directory, and accepts optional arguments",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File path of targeted python file, relative to the working directory",
+                },
+                "content": {
+                    "type": "string",
+                    "description": "Content of file to be written",
+                },
+            },
+            "required": ["file_path", "content",],
+        },
+    },
+}
+
 def write_file(working_directory: str, file_path: str, content: str) -> str:
     global full_path
     try:

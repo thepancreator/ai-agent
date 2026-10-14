@@ -2,6 +2,24 @@ from config import *
 import os
 full_path: str
 
+schema_get_file_content = {
+    "type": "function",
+    "function": {
+        "name": "get_file_content",
+        "description": "Reads out contents of target file, given it is readable",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "File path of targeted python file, relative to the working directory",
+                },
+            },
+            "required": ["file_path",],
+        },
+    },
+}
+
 def get_file_content(working_directory: str, file_path: str) -> str:
     global full_path
     try:
